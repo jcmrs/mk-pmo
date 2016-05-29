@@ -11,7 +11,7 @@ function section_view_enqueue_uikit_assets() {
 
 }
 
-// Remove comment and content div for typography page.
+// Remove comment div.
 beans_remove_action( 'beans_comments_template' );
 
 // Load document which is always needed at the bottom of template files.

@@ -11,7 +11,16 @@ function detail_view_enqueue_uikit_assets() {
 
 }
 
-// Remove comment and content div for typography page.
+// Force layout.
+add_filter( 'beans_layout', 'detail_force_layout' );
+
+function detail_force_layout() {
+
+    return 'c';
+
+}
+
+// Remove comment div.
 beans_remove_action( 'beans_comments_template' );
 
 // Load document which is always needed at the bottom of template files.

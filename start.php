@@ -11,9 +11,13 @@ function start_view_enqueue_uikit_assets() {
 
 }
 
-function beans_child_view_force_layout( $args ) {
+// Force template layout
 
-	return 'c';
+add_filter( 'beans_layout', 'beans_child_view_force_layout' );
+
+function beans_child_view_force_layout() {
+
+    return 'c';
 
 }
 
@@ -48,7 +52,7 @@ function start_register_post_meta() {
         )
     );
 
-    beans_register_post_meta( $fields, array( 'post', 'page' ), 'beans-child-hero', array( 'title' => __( 'Hero Content', 'beans-child' ) ) );
+    beans_register_post_meta( $fields, array( 'start.php' ), 'beans-child-hero', array( 'title' => __( 'Hero Content', 'beans-child' ) ) );
 
 }
 
