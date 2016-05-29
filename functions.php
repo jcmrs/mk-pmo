@@ -47,6 +47,37 @@ function mk_site_title_tag_append_markup() {
 	
 }
 
+// Add Header Bar
+beans_add_smart_action( 'beans_header_before_markup', 'header_bar' );
+
+function header_bar() {
+
+	?>
+	<div class="tm-header-bar uk-block-muted">
+		
+		
+		<div class="uk-container uk-container-center uk-text-justify">
+			
+			<div class="uk-grid" data-uk-grid-match data-uk-margin>
+    			<div class="uk-width-large-1-2 uk-width-medium-1-2 uk-text-middle uk-text-left uk-text-center-small uk-text-break">
+    				PMO voor werkgever, werknemer en zzp
+    			</div>
+    			<div class="uk-width-large-1-2 uk-width-medium-1-2 uk-text-right uk-text-middle uk-text-center-small">
+    				<a href="tel:1-562-867-5309"><i class="uk-icon-phone"></i> 562-867-5309</a> <a href="mailto:info@mail.net"><i class="uk-icon-envelope-o"></i> info @ mail.net</a>
+    			</div>
+			</div>
+			
+			
+		</div>
+		
+	</div>
+	<?php
+
+}
+
+// Add sticky to Navbar
+beans_add_attribute( 'beans_header', 'data-uk-sticky', 'top:0' );
+
 // Add Smooth Scroll.
 add_action( 'beans_uikit_enqueue_scripts', 'smooth_scroll_enqueue_uikit_assets' );
 
@@ -60,13 +91,6 @@ function smooth_scroll_enqueue_uikit_assets() {
 // Add Back to Top. Figure out why it doesn't scroll back all the way to the top!
 beans_add_attribute( 'beans_body', 'id', 'mk-top' );
 // beans_add_attribute( 'tm_header_bar', 'id', 'mk-top' );
-
-// Add sticky component to uikit for sticky Navbar
-beans_uikit_enqueue_components( array( 'sticky' ), 'add-ons' );
-
-// Sticky menu
-// Issue: not working as intended. UI glitching.
-beans_add_attribute( 'beans_header', 'data-uk-sticky', '{ animation: \'uk-animation-slide-top\', showup:true }' );
 
 // Widget Area: CTA.
 add_action( 'widgets_init', 'cta_widget_area' );

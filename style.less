@@ -105,10 +105,41 @@ nav.tm-primary-menu {
     border-bottom: 2px solid @global-primary-background;
 }
 
+/* Header Bar modification
+ ========================================================================== */
+
+.tm-header-bar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: @global-primary-background;
+    color: @text-contrast-color;
+	font-family: 'Lato', sans-serif;
+	// font-size: @text-small-font-size;
+	line-height: @text-small-line-height;
+	// text-transform: uppercase;
+}
+
+.tm-header-bar a {
+	color: @text-contrast-color;
+	font-family: 'Lato', sans-serif;
+	// font-size: @text-small-font-size;
+	line-height: @text-small-line-height;
+	// padding-left: 10%;
+	// padding-right: 10%;
+	margin-right: 10px;
+	margin-left: 10px;
+	
+	&:hover,
+	&:active {
+		color: @text-contrast-color;
+		text-decoration: none;
+	}
+}
+
 /* Site Branding modification
  ========================================================================== */
 
-.tm-site-title-tag a:link {
+.tm-site-title-tag a {
 	color: @text-success-color;
 	font-family: 'Lato', sans-serif;
 	font-size: @text-small-font-size;
