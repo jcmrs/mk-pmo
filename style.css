@@ -9,3 +9,13 @@ Text Domain: tm-beans
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
+
+/* Site Branding modification
+ ========================================================================== */
+
+.tm-site-branding a {
+    color: #00a8e6;
+}
+    
+.tm-site-title-tag
+
