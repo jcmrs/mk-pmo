@@ -31,6 +31,22 @@ function beans_child_enqueue_assets() {
  * Customisations start here.
  */
 
+// Tweaking the site title tag text
+beans_add_attribute( 'beans_site_title_tag', 'class', 'uk-text-center');
+beans_add_attribute( 'beans_site_title_tag', 'class', 'uk-margin-top');
+beans_add_attribute( 'beans_site_title_tag', 'class', 'uk-text-break');
+beans_replace_attribute( 'beans_site_title_tag', 'class', 'uk-text-muted', 'uk-text-success' );
+// beans_remove_attribute( 'beans_site_title_tag', 'class', 'uk-text-small' );
+
+// Adding tel: link to beans_site_title_tag.
+add_action( 'beans_site_title_tag_append_markup', 'mk_site_title_tag_append_markup' );
+
+function mk_site_title_tag_append_markup() {
+
+	echo ' - bel <a href="tel:1-562-867-5309">562-867-5309</a>';
+	
+}
+
 // Add Smooth Scroll.
 add_action( 'beans_uikit_enqueue_scripts', 'smooth_scroll_enqueue_uikit_assets' );
 
