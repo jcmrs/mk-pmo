@@ -12,6 +12,9 @@ add_action( 'beans_uikit_enqueue_scripts', 'beans_child_enqueue_uikit_assets' );
 function beans_child_enqueue_uikit_assets() {
 
 	beans_compiler_add_fragment( 'uikit', get_stylesheet_directory_uri() . '/style.less', 'less' );
+	
+	beans_uikit_enqueue_components( array( 'flex', 'animation', 'contrast', 'overlay', 'thumbnail', 'modal', 'scrollspy', 'smooth-scroll', 'tab' ), 'core' );
+	beans_uikit_enqueue_components( array( 'lightbox', 'slider', 'slideshow', 'accordion', 'slideshow-fx', 'sticky', 'tooltip', 'progress', 'modal', 'offcanvas' ), 'add-ons' );
 
 }
 
@@ -63,7 +66,6 @@ function cta_widget_area() {
 }
 
 // Display the CTA widget area in the front end.
-// Issue: WHY NO CONTRAST?
 add_action( 'beans_footer_before_markup', 'cta_footer_widget_area' );
 
 function cta_footer_widget_area() {
@@ -81,7 +83,7 @@ function cta_footer_widget_area() {
 }
 
 // Replace default Footer Content.
-// Issue: not applying tm-main to footer itself. Apply to beans_footer yes/no
+// Issue: not applying tm-main to footer itself. Apply to beans_footer instead of footer_content yes/no
 beans_modify_action_callback( 'beans_footer_content', 'beans_child_footer_content' );
 function beans_child_footer_content() {
 
