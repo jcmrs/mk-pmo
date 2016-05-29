@@ -2,9 +2,9 @@
 /* Template name: Typography */
 
 // Load necessary UIkit components.
-add_action( 'beans_uikit_enqueue_scripts', 'example_view_enqueue_uikit_assets' );
+add_action( 'beans_uikit_enqueue_scripts', 'typo_view_enqueue_uikit_assets' );
 
-function example_view_enqueue_uikit_assets() {
+function typo_view_enqueue_uikit_assets() {
 
 	beans_uikit_enqueue_components( array( 'modal', 'tab' ), 'core' );
 	beans_uikit_enqueue_components( array( 'tooltip', 'progress', 'modal', 'offcanvas' ), 'add-ons' );

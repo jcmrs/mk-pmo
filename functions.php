@@ -28,7 +28,75 @@ function beans_child_enqueue_assets() {
  * Customisations start here.
  */
 
+// Add Smooth Scroll.
+add_action( 'beans_uikit_enqueue_scripts', 'smooth_scroll_enqueue_uikit_assets' );
 
+function smooth_scroll_enqueue_uikit_assets() {
+
+    beans_uikit_enqueue_components( array( 'smooth-scroll' ) );
+    beans_compiler_add_fragment( 'uikit', get_stylesheet_directory() . '/style.less', 'less' );
+
+}
+
+// Add Back to Top. Figure out why it doesn't scroll back all the way to the top!
+beans_add_attribute( 'beans_body', 'id', 'mk-top' );
+// beans_add_attribute( 'tm_header_bar', 'id', 'mk-top' );
+
+// Add sticky component to uikit for sticky Navbar
+beans_uikit_enqueue_components( array( 'sticky' ), 'add-ons' );
+
+// Sticky menu
+// Issue: not working as intended. UI glitching.
+beans_add_attribute( 'beans_header', 'data-uk-sticky', '{ animation: \'uk-animation-slide-top\', showup:true }' );
+
+// Widget Area: CTA.
+add_action( 'widgets_init', 'cta_widget_area' );
+
+function cta_widget_area() {
+
+    beans_register_widget_area( array(
+        'name' => 'CTA',
+        'id' => 'cta',
+        'beans_type' => 'grid'
+    ) );
+
+}
+
+// Display the CTA widget area in the front end.
+// Issue: WHY NO CONTRAST?
+add_action( 'beans_footer_before_markup', 'cta_footer_widget_area' );
+
+function cta_footer_widget_area() {
+
+	?>
+	<div class="tm-main uk-block uk-padding-bottom-remove">
+		<div class="tm-footer uk-block uk-block-primary">
+			<div class="uk-container uk-container-center uk-contrast uk-text-center">
+				<?php echo beans_widget_area( 'cta' ); ?>
+			</div>
+		</div>
+	</div>
+	<?php
+
+}
+
+// Replace default Footer Content.
+// Issue: not applying tm-main to footer itself. Apply to beans_footer yes/no
+beans_modify_action_callback( 'beans_footer_content', 'beans_child_footer_content' );
+function beans_child_footer_content() {
+
+    ?>
+    <div class="uk-grid uk-container-center uk-text-small" data-uk-grid-margin>
+        <div class="uk-width-large-1-2 uk-width-small-1-2 uk-text-center">
+            <p class="uk-text-muted">Copyright | Privacy | Sitemap</p>
+        </div>
+
+        <div class="uk-width-large-1-2 uk-width-small-1-2 uk-text-center uk-clearfix">
+            <p class="uk-text-muted"><a class="mk-top href="#mk-top" title="Terug naar boven" data-uk-smooth-scroll><i class="uk-icon-arrow-up"></i> Top</a></p>
+        </div>
+    </div>
+    <?php
+}
 
 /*
  * Customisations end here.
