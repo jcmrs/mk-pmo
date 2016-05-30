@@ -27,6 +27,30 @@ function beans_child_enqueue_assets() {
 
 }
 
+// Clean the Head.
+remove_action(‘wp_head’, ‘rsd_link’); 
+remove_action(‘wp_head’, ‘wp_generator’); 
+remove_action(‘wp_head’, ‘feed_links’, 2); 
+remove_action(‘wp_head’, ‘feed_links_extra’, 3); 
+remove_action(‘wp_head’, ‘index_rel_link’);
+remove_action(‘wp_head’, ‘wlwmanifest_link’); 
+remove_action(‘wp_head’, ‘start_post_rel_link’, 10, 0); 
+remove_action(‘wp_head’, ‘parent_post_rel_link’, 10, 0);
+remove_action(‘wp_head’, ‘adjacent_posts_rel_link’, 10, 0);
+remove_action(‘wp_head’, ‘adjacent_posts_rel_link_wp_head’, 10, 0 );
+remove_action(‘wp_head’, ‘wp_shortlink_wp_head’, 10, 0 );
+// remove_action(‘wp_head’, ‘rel_canonical’, 10, 0 );
+
+// Disable any and all mention of emoji's.
+// Source code credit: http://ottopress.com/
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );   
+remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );     
+remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+
 /*
  * Customisations start here.
  */
@@ -63,7 +87,7 @@ function header_bar() {
     				PMO voor werkgever, werknemer en zzp
     			</div>
     			<div class="uk-width-large-1-2 uk-width-medium-1-2 uk-text-right uk-text-middle uk-text-center-small">
-    				<a href="tel:1-562-867-5309"><i class="uk-icon-phone"></i> 562-867-5309</a> <a href="mailto:info@mail.net"><i class="uk-icon-envelope-o"></i> info @ mail.net</a>
+    				<a href="#"><i class="uk-icon-map-marker"></i> Locaties</a> <a href="mailto:info@mail.net"><i class="uk-icon-envelope"></i> info @ mail.net</a> <a href="tel:1-562-867-5309"><i class="uk-icon-phone-square"></i> 562-867-5309</a>
     			</div>
 			</div>
 			
@@ -91,6 +115,31 @@ function smooth_scroll_enqueue_uikit_assets() {
 // Add Back to Top. Figure out why it doesn't scroll back all the way to the top!
 beans_add_attribute( 'beans_body', 'id', 'mk-top' );
 // beans_add_attribute( 'tm_header_bar', 'id', 'mk-top' );
+
+// Change default featured image size.
+
+add_filter( 'beans_edit_post_image_args', 'example_post_image_edit_args' );
+
+function example_post_image_edit_args( $args ) {
+
+    return array_merge( $args, array(
+        'resize' => array( 1200, 400, true ),
+    ) );
+
+}
+
+add_filter( 'beans_edit_post_image_small_args', 'example_post_image_small_args' );
+
+function example_post_image_small_args( $args ) {
+
+    return array_merge( $args, array(
+        'resize' => array( 800, 200, true ),
+    ) );
+    
+}
+
+// Add Related Content
+// area beneath main content, seperated by gutter, used for related content function.
 
 // Widget Area: CTA.
 add_action( 'widgets_init', 'cta_widget_area' );
