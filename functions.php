@@ -84,7 +84,7 @@ function header_bar() {
 			
 			<div class="uk-grid" data-uk-grid-match data-uk-margin>
     			<div class="uk-width-large-1-2 uk-width-medium-1-2 uk-text-middle uk-text-left uk-text-center-small uk-text-break">
-    				PMO voor werkgever, werknemer en zzp
+    				<?php echo beans_site_title_tag(); ?> PMO voor werkgever, werknemer en zzp
     			</div>
     			<div class="uk-width-large-1-2 uk-width-medium-1-2 uk-text-right uk-text-middle uk-text-center-small">
     				<a href="#"><i class="uk-icon-map-marker"></i> Locaties</a> <a href="mailto:info@mail.net"><i class="uk-icon-envelope"></i> info @ mail.net</a> <a href="tel:1-562-867-5309"><i class="uk-icon-phone-square"></i> 562-867-5309</a>

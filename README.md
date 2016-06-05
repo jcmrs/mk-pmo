@@ -1,7 +1,7 @@
 # mk-pmo
 PMO Child Theme for Beans
 
-A Beans Child Theme - experiment in progress
+A messy experiment in progress
 
 Beans = The most innovative WordPress theme
 
